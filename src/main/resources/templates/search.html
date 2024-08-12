@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #495057;
+            margin-bottom: 30px;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            color: #495057;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #495057;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .view-ingredients {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .view-ingredients a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .view-ingredients a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Search for Recipes</h1>
+    <form action="/recipes/search" method="get">
+        <label for="ingredient">Ingredient:</label>
+        <input type="text" id="ingredient" name="ingredient" placeholder="Enter an ingredient">
+        <input type="submit" value="Search">
+    </form>
+
+    <div class="view-ingredients">
+        <a href="/ingredients">View My Ingredients</a>
+    </div>
+</div>
+</body>
+</html>

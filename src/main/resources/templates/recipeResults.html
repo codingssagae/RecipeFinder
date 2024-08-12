@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #343a40;
+        }
+        h1 {
+            text-align: center;
+            color: #495057;
+        }
+        .recipe-list {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .recipe-list li {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .recipe-list li:hover {
+            transform: translateY(-5px);
+        }
+        .recipe-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .recipe-ingredients {
+            font-size: 16px;
+            color: #6c757d;
+        }
+        .recipe-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .save-form {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .save-form button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .save-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<h1>Recipe Results</h1>
+<div th:if="${recipes}">
+    <ul class="recipe-list">
+        <li th:each="recipe : ${recipes}">
+            <h2 class="recipe-title" th:text="${recipe.recipeName}"></h2>
+            <p class="recipe-ingredients" th:text="${recipe.ingredients}"></p>
+            <img class="recipe-image" th:src="${recipe.imageUrl}" alt="Recipe Image"/>
+            <div class="save-form">
+                <form action="/recipes/save" method="post">
+                    <input type="hidden" name="username" value="testuser"/>
+                    <input type="hidden" name="recipeData" th:value="${recipe}"/>
+                    <button type="submit">Save Recipe</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
